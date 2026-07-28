@@ -408,8 +408,9 @@
   fetch("./products.json")
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
-      if (Array.isArray(data) && data.length) {
-        state.products = data;
+      var list = data && Array.isArray(data.products) ? data.products : (Array.isArray(data) ? data : null);
+      if (list && list.length) {
+        state.products = list;
         render();
       }
     })
