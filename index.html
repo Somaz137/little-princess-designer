@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  if (window.location.hash && window.location.hash.match(/access_token|confirmation_token|invite_token|recovery_token|error/)) {
+    window.location.href = '/admin/' + window.location.hash;
+  }
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Little Princess Designer — Custom Party Dresses, Made to Order in Lahore</title>
