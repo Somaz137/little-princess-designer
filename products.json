@@ -1,104 +1,6 @@
 {
   "products": [
     {
-      "id": "p1",
-      "name": "Rainbow Tutu Party Dress",
-      "price": 34,
-      "category": "girls",
-      "sizes": [
-        "2T",
-        "3T",
-        "4T",
-        "5"
-      ],
-      "description": "A twirly, made-to-order tutu dress with layered rainbow tulle — perfect for birthdays.",
-      "image": ""
-    },
-    {
-      "id": "p2",
-      "name": "Butterfly Wings Costume",
-      "price": 28,
-      "category": "girls",
-      "sizes": [
-        "3T",
-        "4T",
-        "5",
-        "6"
-      ],
-      "description": "Hand-finished butterfly wings and bodice, made to order for dress-up days.",
-      "image": ""
-    },
-    {
-      "id": "p3",
-      "name": "Enchanted Princess Gown",
-      "price": 42,
-      "category": "girls",
-      "sizes": [
-        "4T",
-        "5",
-        "6",
-        "7"
-      ],
-      "description": "A flowing, embellished gown tailored for weddings and fairytale-themed parties.",
-      "image": ""
-    },
-    {
-      "id": "p4",
-      "name": "Custom Name Prince Outfit",
-      "price": 26,
-      "category": "boys",
-      "sizes": [
-        "4T",
-        "5",
-        "6",
-        "7"
-      ],
-      "description": "A personalized outfit with your little one's name embroidered on, made to order.",
-      "image": ""
-    },
-    {
-      "id": "p5",
-      "name": "Little Prince Waistcoat Set",
-      "price": 18,
-      "category": "boys",
-      "sizes": [
-        "2T",
-        "3T",
-        "4T",
-        "5",
-        "6"
-      ],
-      "description": "A dapper waistcoat and shirt set, custom-stitched for parties.",
-      "image": ""
-    },
-    {
-      "id": "p6",
-      "name": "Custom Character Costume",
-      "price": 24,
-      "category": "boys",
-      "sizes": [
-        "5",
-        "6",
-        "7",
-        "8"
-      ],
-      "description": "A made-to-order costume set inspired by your child's favorite character.",
-      "image": ""
-    },
-    {
-      "id": "p7",
-      "name": "Soft Cotton Onesie",
-      "price": 22,
-      "category": "baby",
-      "sizes": [
-        "0-3M",
-        "3-6M",
-        "6-12M"
-      ],
-      "description": "Gentle organic cotton onesie, stitched to order with snap closures.",
-      "image": ""
-    },
-    {
       "id": "p8",
       "name": "Baby Tutu Romper",
       "price": 30,
@@ -120,7 +22,7 @@
         "3-6M"
       ],
       "description": "an image that can be used as a wallpaper",
-      "image": "/uploads/products/wallpaperenginelockoverride_randomkosncf.jpg"
+      "image": "https://unsplash.com/photos/mountain-near-water-coast-under-cloudy-sky-HWV1XtnPAXw"
     }
   ]
 }
