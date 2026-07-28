@@ -23,6 +23,18 @@
       ],
       "description": "an image that can be used as a wallpaper",
       "image": "https://unsplash.com/photos/mountain-near-water-coast-under-cloudy-sky-HWV1XtnPAXw"
+    },
+    {
+      "id": "p1",
+      "name": "testing product 2",
+      "price": 9,
+      "category": "baby",
+      "sizes": [
+        "2T",
+        "3T"
+      ],
+      "description": "testing the second product ",
+      "image": "https://res.cloudinary.com/krsizulo/image/upload/v1785253101/cld-sample-3.jpg"
     }
   ]
 }
