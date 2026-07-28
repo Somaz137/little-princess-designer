@@ -11,7 +11,7 @@
         "4T",
         "5"
       ],
-      "description": "A twirly, made-to-order tutu dress with layered rainbow tulle \u2014 perfect for birthdays.",
+      "description": "A twirly, made-to-order tutu dress with layered rainbow tulle — perfect for birthdays.",
       "image": ""
     },
     {
@@ -110,6 +110,17 @@
       ],
       "description": "A soft tulle romper made to order for a baby girl's first celebration.",
       "image": ""
+    },
+    {
+      "id": "p9",
+      "name": "testing product",
+      "price": 10,
+      "category": "boys",
+      "sizes": [
+        "3-6M"
+      ],
+      "description": "an image that can be used as a wallpaper",
+      "image": "/uploads/products/wallpaperenginelockoverride_randomkosncf.jpg"
     }
   ]
 }
