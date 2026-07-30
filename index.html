@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  if (window.location.hash && window.location.hash.match(/access_token|confirmation_token|invite_token|recovery_token|error/)) {
+    window.location.href = '/admin/' + window.location.hash;
+  }
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Little Princess Designer — Custom Party Dresses, Made to Order in Lahore</title>
+<meta name="description" content="Little Princess Designer — a Lahore-based made-to-order atelier for girls' and boys' party dresses, gowns, tutu costumes and custom-stitched outfits, shipped worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: oklch(0.97 0.02 335);
+    --text: oklch(0.27 0.04 320);
+    --muted: oklch(0.55 0.08 335);
+    --border: oklch(0.9 0.05 335);
+    --brand: oklch(0.6 0.24 335);
+    --accent: oklch(0.55 0.2 300);
+    --accent-hover: oklch(0.45 0.2 300);
+    --nav-active-bg: oklch(0.94 0.05 335);
+  }
+  *{box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);}
+  h1,h2,h3,.brand{font-family:'Baloo 2',sans-serif;}
+  .script{font-family:'Pacifico',cursive;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{color:var(--accent-hover);}
+  button{font-family:'Poppins',sans-serif;cursor:pointer;}
+  img{max-width:100%;display:block;}
+
+  #app{min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);}
+
+  header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 32px;background:#fff;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+  .brand{font-size:22px;font-weight:700;color:var(--brand);cursor:pointer;display:flex;align-items:center;gap:10px;border:none;background:none;padding:0;}
+  .brand img{height:34px;width:auto;}
+  nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .nav-btn{background:none;border:none;padding:10px 14px;border-radius:8px;font-weight:600;font-size:15px;color:var(--text);}
+  .nav-btn.active{background:var(--nav-active-bg);color:var(--brand);}
+  .btn-msg{background:var(--brand);color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px;}
+  .btn-msg:hover{color:#fff;opacity:.92;}
+
+  main{flex:1;display:flex;flex-direction:column;}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:56px 32px;background:linear-gradient(135deg,oklch(0.95 0.05 335) 0%,var(--bg) 60%);}
+  .hero-copy{display:flex;flex-direction:column;gap:16px;max-width:520px;}
+  .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:600;color:var(--accent);}
+  .hero h1{margin:0;font-size:clamp(32px,4.5vw,52px);line-height:1.1;color:var(--text);}
+  .hero h1 .script{color:var(--brand);font-size:1.15em;}
+  .hero p{margin:0;font-size:17px;color:var(--muted);line-height:1.6;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+  .btn-primary{background:var(--brand);color:#fff;border:none;padding:16px 32px;border-radius:999px;font-size:17px;font-weight:700;}
+  .btn-primary:hover{color:#fff;opacity:.92;}
+  .btn-secondary{background:#fff;color:var(--text);border:1px solid var(--border);padding:16px 28px;border-radius:999px;font-size:17px;font-weight:700;display:inline-flex;align-items:center;}
+  .btn-secondary:hover{color:var(--text);}
+  .hero-imgs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:340px;}
+  .hero-imgs .big{grid-row:1/3;border-radius:16px;overflow:hidden;}
+  .hero-imgs .small{border-radius:16px;overflow:hidden;}
+
+  /* Placeholder image tile */
+  .ph{width:100%;height:100%;background:color-mix(in oklch,var(--accent) 8%,transparent);border:1px solid color-mix(in oklch,var(--accent) 35%,transparent);display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;box-sizing:border-box;}
+  .ph span{font-size:12px;color:var(--muted);line-height:1.4;}
+  .ph.has-img{background:none;border:none;padding:0;}
+  .ph.has-img img{width:100%;height:100%;object-fit:cover;}
+
+  /* Category cards */
+  .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:48px 32px;max-width:1200px;margin:0 auto;width:100%;}
+  .cat-card{cursor:pointer;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-align:left;padding:0;}
+  .cat-card .ph-wrap{aspect-ratio:4/3;}
+  .cat-card .body{padding:16px;}
+  .cat-card h3{margin:0;font-size:19px;}
+  .cat-card p{margin:4px 0 0;color:var(--muted);font-size:14px;}
+
+  /* Product cards */
+  .section{max-width:1200px;margin:0 auto;width:100%;padding:0 32px 64px;}
+  .section h2{font-size:26px;margin:0 0 20px;}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+  .product-card{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-align:left;padding:0;width:100%;}
+  .product-card .ph-wrap{width:100%;aspect-ratio:1/1;}
+  .product-card .body{padding:14px;display:flex;flex-direction:column;gap:6px;}
+  .cat-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;}
+  .product-card h3{margin:0;font-size:16px;}
+  .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:6px;}
+  .price{font-weight:700;}
+  .btn-view{background:none;border:1px solid var(--text);color:var(--text);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:600;}
+
+  /* About / quote */
+  .about-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:0;max-width:1200px;margin:0 auto 56px;width:calc(100% - 64px);border-radius:20px;overflow:hidden;}
+  .about-card{background:#fff;padding:40px;display:flex;flex-direction:column;gap:12px;justify-content:center;}
+  .about-card p{margin:0;color:var(--muted);line-height:1.7;font-size:15px;}
+  .quote-card{background:var(--brand);padding:40px;display:flex;align-items:center;color:#fff;}
+  .quote-card p{margin:0;font-size:17px;line-height:1.7;font-style:italic;}
+
+  /* Shipping banner */
+  .shipping{background:var(--accent);color:#fff;text-align:center;padding:28px 24px;}
+  .shipping h2{margin:0;font-size:24px;}
+  .shipping p{margin:6px 0 0;font-size:15px;opacity:.9;}
+
+  /* Instagram */
+  .insta{max-width:1200px;margin:0 auto;width:100%;padding:56px 32px 64px;text-align:center;}
+  .insta h2{margin:0 0 4px;font-size:26px;color:var(--brand);}
+  .insta .handle{margin:0 0 24px;color:var(--muted);}
+  .insta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;}
+  .insta-grid a{aspect-ratio:1/1;border-radius:12px;overflow:hidden;display:block;}
+
+  /* CTA */
+  .cta{max-width:900px;margin:0 auto;width:100%;padding:0 32px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;}
+  .cta h2{margin:0;font-size:26px;}
+  .cta p{margin:0;color:var(--muted);max-width:480px;}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .btn-cta-primary{background:var(--brand);color:#fff;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;}
+  .btn-cta-primary:hover{color:#fff;}
+  .btn-cta-secondary{background:#fff;color:var(--text);border:1px solid var(--border);padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;}
+  .btn-cta-secondary:hover{color:var(--text);}
+
+  /* Catalog */
+  .catalog{max-width:1200px;margin:0 auto;width:100%;padding:40px 32px 64px;}
+  .catalog h1{font-size:30px;margin:0 0 20px;}
+  .filters{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+  .filter-btn{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px;border:none;background:#fff;color:var(--text);box-shadow:inset 0 0 0 1px var(--border);}
+  .filter-btn.active{background:var(--accent);color:#fff;box-shadow:none;}
+  .empty-state{text-align:center;padding:60px 20px;color:var(--muted);}
+
+  /* Product detail */
+  .product-detail{max-width:1000px;margin:0 auto;width:100%;padding:32px 32px 64px;}
+  .back-btn{background:none;border:none;color:var(--muted);font-size:14px;padding:0;margin-bottom:20px;}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .detail-img{aspect-ratio:1/1;border-radius:16px;overflow:hidden;}
+  .detail-info{display:flex;flex-direction:column;gap:16px;}
+  .detail-info h1{margin:0;font-size:30px;}
+  .detail-price{font-size:24px;font-weight:800;}
+  .detail-info>p{margin:0;color:var(--muted);line-height:1.6;}
+  .sizes-label{font-size:13px;font-weight:700;margin-bottom:8px;}
+  .size-chips{display:flex;gap:8px;flex-wrap:wrap;}
+  .size-chip{padding:8px 16px;border-radius:8px;font-weight:600;font-size:14px;border:1px solid var(--border);background:#fff;}
+  .detail-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+  .btn-detail-primary{background:var(--brand);color:#fff;padding:16px 24px;border-radius:10px;font-size:16px;font-weight:700;}
+  .btn-detail-primary:hover{color:#fff;}
+  .btn-detail-secondary{background:#fff;color:var(--text);border:1px solid var(--border);padding:16px 24px;border-radius:10px;font-size:16px;font-weight:700;}
+  .btn-detail-secondary:hover{color:var(--text);}
+
+  footer{background:#fff;border-top:1px solid var(--border);padding:28px 32px;text-align:center;color:var(--muted);font-size:13px;display:flex;flex-direction:column;gap:10px;align-items:center;}
+  footer img{height:26px;width:auto;}
+  .footer-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;}
+    .hero-imgs{height:260px;}
+    .about-wrap{grid-template-columns:1fr;}
+    .detail-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var CATEGORY_LABELS = { girls: "Girls", boys: "Boys", baby: "Baby" };
+  var PHONE_WHATSAPP = "923001234567";
+  var EMAIL = "hello@littleprincessdesigner.com";
+  var INSTAGRAM_URL = "https://www.instagram.com/littleprincessdesigner/";
+  var FACEBOOK_URL = "https://www.facebook.com/LittlePrincessDesigner/";
+
+  function seedProducts() {
+    return [
+      { id: "p1", name: "Rainbow Tutu Party Dress", price: 34, category: "girls", sizes: ["2T","3T","4T","5"], description: "A twirly, made-to-order tutu dress with layered rainbow tulle — perfect for birthdays.", image: "" },
+      { id: "p2", name: "Butterfly Wings Costume", price: 28, category: "girls", sizes: ["3T","4T","5","6"], description: "Hand-finished butterfly wings and bodice, made to order for dress-up days.", image: "" },
+      { id: "p3", name: "Enchanted Princess Gown", price: 42, category: "girls", sizes: ["4T","5","6","7"], description: "A flowing, embellished gown tailored for weddings and fairytale-themed parties.", image: "" },
+      { id: "p4", name: "Custom Name Prince Outfit", price: 26, category: "boys", sizes: ["4T","5","6","7"], description: "A personalized outfit with your little one's name embroidered on, made to order.", image: "" },
+      { id: "p5", name: "Little Prince Waistcoat Set", price: 18, category: "boys", sizes: ["2T","3T","4T","5","6"], description: "A dapper waistcoat and shirt set, custom-stitched for parties.", image: "" },
+      { id: "p6", name: "Custom Character Costume", price: 24, category: "boys", sizes: ["5","6","7","8"], description: "A made-to-order costume set inspired by your child's favorite character.", image: "" },
+      { id: "p7", name: "Soft Cotton Onesie", price: 22, category: "baby", sizes: ["0-3M","3-6M","6-12M"], description: "Gentle organic cotton onesie, stitched to order with snap closures.", image: "" },
+      { id: "p8", name: "Baby Tutu Romper", price: 30, category: "baby", sizes: ["3-6M","6-12M","12-18M"], description: "A soft tulle romper made to order for a baby girl's first celebration.", image: "" }
+    ];
+  }
+
+  var state = {
+    view: "home",
+    categoryFilter: "all",
+    selectedProductId: null,
+    products: seedProducts()
+  };
+
+  function fmt(n) { return "$" + Number(n).toFixed(2); }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function whatsappLink(text) {
+    return "https://wa.me/" + PHONE_WHATSAPP + "?text=" + encodeURIComponent(text);
+  }
+  function emailLink(subject) {
+    return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject);
+  }
+  var CALL_LINK = "tel:" + PHONE_WHATSAPP;
+
+  function ph(caption, img) {
+    if (img) {
+      return '<div class="ph has-img"><img src="' + esc(img) + '" alt="' + esc(caption) + '" loading="lazy"></div>';
+    }
+    return '<div class="ph"><span>' + esc(caption) + "</span></div>";
+  }
+
+  function goHome() { state.view = "home"; render(); window.scrollTo(0, 0); }
+  function goShopAll() { state.view = "catalog"; state.categoryFilter = "all"; render(); window.scrollTo(0, 0); }
+  function goCategory(cat) { state.view = "catalog"; state.categoryFilter = cat; render(); window.scrollTo(0, 0); }
+  function setCategoryFilter(cat) { state.categoryFilter = cat; render(); }
+  function viewProduct(id) { state.view = "product"; state.selectedProductId = id; render(); window.scrollTo(0, 0); }
+
+  function productCard(p) {
+    var label = CATEGORY_LABELS[p.category] || p.category;
+    return (
+      '<button class="product-card" data-view-product="' + esc(p.id) + '">' +
+        '<div class="ph-wrap">' + ph(p.name, p.image) + "</div>" +
+        '<div class="body">' +
+          '<span class="cat-label">' + esc(label) + "</span>" +
+          "<h3>" + esc(p.name) + "</h3>" +
+          '<div class="price-row"><span class="price">' + fmt(p.price) + '</span><span class="btn-view">View</span></div>' +
+        "</div>" +
+      "</button>"
+    );
+  }
+
+  function renderHeader() {
+    return (
+      "<header>" +
+        '<button class="brand" data-go="home"><img src="uploads/logo-mark.png" alt="Little Princess Designer logo"></button>' +
+        "<nav>" +
+          '<button class="nav-btn' + (state.view === "home" ? " active" : "") + '" data-go="home">Home</button>' +
+          '<button class="nav-btn' + (state.view === "catalog" || state.view === "product" ? " active" : "") + '" data-go="shop">Shop</button>' +
+          '<a class="btn-msg" href="' + whatsappLink("Hi! I'm interested in an outfit from Little Princess Designer.") + '" target="_blank" rel="noopener">Message Us</a>' +
+        "</nav>" +
+      "</header>"
+    );
+  }
+
+  function renderFooter() {
+    return (
+      "<footer>" +
+        '<img src="uploads/logo-mark.png" alt="Little Princess Designer logo">' +
+        "<span>Little Princess Designer — custom party dresses, made to order in Lahore</span>" +
+        '<div class="footer-links">' +
+          '<a href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">Instagram</a>' +
+          '<a href="' + FACEBOOK_URL + '" target="_blank" rel="noopener">Facebook</a>' +
+          '<a href="' + whatsappLink("Hi! I'm interested in an outfit from Little Princess Designer.") + '" target="_blank" rel="noopener">WhatsApp</a>' +
+          '<a href="' + emailLink("Order Inquiry - Little Princess Designer") + '">Email</a>' +
+          '<a href="' + CALL_LINK + '">Call</a>' +
+        "</div>" +
+      "</footer>"
+    );
+  }
+
+  function renderHome() {
+    var featured = state.products.slice(0, 4);
+    return (
+      "<section>" +
+        '<div class="hero">' +
+          '<div class="hero-copy">' +
+            '<span class="eyebrow">Lahore\'s custom party-dress atelier</span>' +
+            '<h1>Twirl-worthy <span class="script">Girls</span> &amp; Boys wear</h1>' +
+            "<p>Princess dresses &middot; Fairytale gowns &middot; Tutu costumes &middot; Custom-stitched boys sets — made to order, just for your little one.</p>" +
+            '<div class="hero-actions">' +
+              '<button class="btn-primary" data-go="shop">Browse Collection</button>' +
+              '<a class="btn-secondary" href="' + whatsappLink("Hi! I'm interested in an outfit from Little Princess Designer.") + '" target="_blank" rel="noopener">WhatsApp Us</a>' +
+            "</div>" +
+          "</div>" +
+          '<div class="hero-imgs">' +
+            '<div class="big">' + ph("Girl twirling in tutu dress") + "</div>" +
+            '<div class="small">' + ph("Party dress close-up") + "</div>" +
+            '<div class="small">' + ph("Hair accessory detail") + "</div>" +
+          "</div>" +
+        "</div>" +
+
+        '<div class="cats">' +
+          '<button class="cat-card" data-go-category="girls"><div class="ph-wrap">' + ph("Girls collection") + '</div><div class="body"><h3>Girls</h3><p>Princess &amp; fairytale dresses</p></div></button>' +
+          '<button class="cat-card" data-go-category="boys"><div class="ph-wrap">' + ph("Boys collection") + '</div><div class="body"><h3>Boys</h3><p>Custom party &amp; occasion sets</p></div></button>' +
+          '<button class="cat-card" data-go-category="baby"><div class="ph-wrap">' + ph("Baby collection") + '</div><div class="body"><h3>Baby</h3><p>Onesies, rompers &amp; gowns</p></div></button>' +
+        "</div>" +
+
+        '<div class="section">' +
+          "<h2>Featured picks</h2>" +
+          '<div class="product-grid">' + featured.map(productCard).join("") + "</div>" +
+        "</div>" +
+
+        '<div class="about-wrap">' +
+          '<div class="about-card">' +
+            "<h2>About the Company</h2>" +
+            "<p>We're a Lahore-based team stitching customized party dresses for baby girls and boys, made only on order. Every piece — from tutu gowns to little prince sets — is crafted by hand with care, so your child's special day feels truly one of a kind.</p>" +
+          "</div>" +
+          '<div class="quote-card">' +
+            '<p>"We are a passionate team with an artistic mindset, fully dedicated to transforming ideas into reality — together, we inspire creativity in everything we do."</p>' +
+          "</div>" +
+        "</div>" +
+
+        '<div class="shipping">' +
+          "<h2>Worldwide Shipping</h2>" +
+          "<p>Custom orders stitched in Lahore and shipped to families around the world.</p>" +
+        "</div>" +
+
+        '<div class="insta">' +
+          "<h2>Follow us on Instagram</h2>" +
+          '<p class="handle">@littleprincessdesigner</p>' +
+          '<div class="insta-grid">' +
+            '<a href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">' + ph("Butterfly wings costume") + "</a>" +
+            '<a href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">' + ph("Custom tutu dress") + "</a>" +
+            '<a href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">' + ph("Princess gown") + "</a>" +
+            '<a href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">' + ph("Custom name boys outfit") + "</a>" +
+          "</div>" +
+        "</div>" +
+
+        '<div class="cta">' +
+          "<h2>Ready to order?</h2>" +
+          "<p>Reach out with the design you love and we'll get your custom piece started.</p>" +
+          '<div class="cta-actions">' +
+            '<a class="btn-cta-primary" href="' + whatsappLink("Hi! I'm interested in an outfit from Little Princess Designer.") + '" target="_blank" rel="noopener">WhatsApp</a>' +
+            '<a class="btn-cta-secondary" href="' + emailLink("Order Inquiry - Little Princess Designer") + '">Email Us</a>' +
+            '<a class="btn-cta-secondary" href="' + CALL_LINK + '">Call Us</a>' +
+          "</div>" +
+        "</div>" +
+      "</section>"
+    );
+  }
+
+  function renderCatalog() {
+    var cats = [["all", "All"], ["girls", "Girls"], ["boys", "Boys"], ["baby", "Baby"]];
+    var filtered = state.categoryFilter === "all" ? state.products : state.products.filter(function (p) { return p.category === state.categoryFilter; });
+    var title = state.categoryFilter === "all" ? "Shop All" : CATEGORY_LABELS[state.categoryFilter];
+
+    return (
+      '<section class="catalog">' +
+        "<h1>" + esc(title) + "</h1>" +
+        '<div class="filters">' +
+          cats.map(function (c) {
+            var active = state.categoryFilter === c[0];
+            return '<button class="filter-btn' + (active ? " active" : "") + '" data-filter="' + c[0] + '">' + c[1] + "</button>";
+          }).join("") +
+        "</div>" +
+        (filtered.length
+          ? '<div class="product-grid">' + filtered.map(productCard).join("") + "</div>"
+          : '<div class="empty-state"><p>No products in this category yet.</p></div>') +
+      "</section>"
+    );
+  }
+
+  function renderProduct() {
+    var p = state.products.find(function (x) { return x.id === state.selectedProductId; }) || state.products[0];
+    if (!p) return '<section class="product-detail"><p>Product not found.</p></section>';
+    var label = CATEGORY_LABELS[p.category] || p.category;
+    var orderText = "Hi! I'd like to order the \"" + p.name + "\" (" + fmt(p.price) + ").";
+    return (
+      '<section class="product-detail">' +
+        '<button class="back-btn" data-go="shop">&larr; Back to shop</button>' +
+        '<div class="detail-grid">' +
+          '<div class="detail-img">' + ph(p.name, p.image) + "</div>" +
+          '<div class="detail-info">' +
+            '<span class="cat-label">' + esc(label) + "</span>" +
+            "<h1>" + esc(p.name) + "</h1>" +
+            '<span class="detail-price">' + fmt(p.price) + "</span>" +
+            "<p>" + esc(p.description) + "</p>" +
+            "<div>" +
+              '<div class="sizes-label">Available sizes</div>' +
+              '<div class="size-chips">' + p.sizes.map(function (s) { return '<span class="size-chip">' + esc(s) + "</span>"; }).join("") + "</div>" +
+            "</div>" +
+            '<div class="detail-actions">' +
+              '<a class="btn-detail-primary" href="' + whatsappLink(orderText) + '" target="_blank" rel="noopener">Order via WhatsApp</a>' +
+              '<a class="btn-detail-secondary" href="' + emailLink("Order Inquiry - Little Princess Designer") + '">Email Us</a>' +
+            "</div>" +
+          "</div>" +
+        "</div>" +
+      "</section>"
+    );
+  }
+
+  function render() {
+    var body = state.view === "catalog" ? renderCatalog() : state.view === "product" ? renderProduct() : renderHome();
+    var app = document.getElementById("app");
+    app.innerHTML = renderHeader() + "<main>" + body + "</main>" + renderFooter();
+  }
+
+  document.addEventListener("click", function (e) {
+    var goEl = e.target.closest("[data-go]");
+    if (goEl) {
+      var go = goEl.getAttribute("data-go");
+      if (go === "home") goHome();
+      else if (go === "shop") goShopAll();
+      return;
+    }
+    var catEl = e.target.closest("[data-go-category]");
+    if (catEl) { goCategory(catEl.getAttribute("data-go-category")); return; }
+    var filterEl = e.target.closest("[data-filter]");
+    if (filterEl) { setCategoryFilter(filterEl.getAttribute("data-filter")); return; }
+    var viewEl = e.target.closest("[data-view-product]");
+    if (viewEl) { viewProduct(viewEl.getAttribute("data-view-product")); return; }
+  });
+
+  render();
+
+  fetch("./products.json")
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      var list = data && Array.isArray(data.products) ? data.products : (Array.isArray(data) ? data : null);
+      if (list && list.length) {
+        state.products = list;
+        render();
+      }
+    })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>
