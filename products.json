@@ -35,6 +35,18 @@
       ],
       "description": "testing the second product ",
       "image": "https://res.cloudinary.com/krsizulo/image/upload/v1785253101/cld-sample-3.jpg"
+    },
+    {
+      "id": "p4",
+      "name": "testin4",
+      "price": 124,
+      "category": "baby",
+      "sizes": [
+        "6-12M",
+        "4T"
+      ],
+      "description": "testing the uploading",
+      "image": "/uploads/products/frame_324.png"
     }
   ]
 }
